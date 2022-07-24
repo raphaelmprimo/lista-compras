@@ -3,7 +3,7 @@
     <va-card style="padding: 0.75rem">
       <va-card-title style="padding: 0.25rem">Adicionar item à lista</va-card-title>
       <div class="row">
-        <div class="flex align-self--center" style="flex-grow:1">
+        <div class="flex align-self--center xs6" style="flex-grow:1">
           <div>
             <va-input
               label="Nome"
@@ -14,7 +14,7 @@
             />
           </div>
         </div>
-        <div class="flex align-self--center">
+        <div class="flex align-self--center xs6">
           <div class="row justify--end">
             <div class="flex" style="flex-grow:1">
               <va-input
@@ -110,7 +110,7 @@ export default {
     return {
       novoNome: '',
       nomePreco: '',
-      itens: {}
+      itens: []
     }
   },
   computed: {
@@ -125,12 +125,12 @@ export default {
         adicionado: false
       });
 
-      this.$vaToast.init({
-        message: 'Item adicionado à lista',
-        color: 'success',
-        position: 'bottom-right',
-        duration: 2000
-      });
+      //this.$vaToast.init({
+      //  message: 'Item adicionado à lista',
+      //  color: 'success',
+      //  position: 'bottom-right',
+      //  duration: 2000
+      //});
 
       this.novoNome = '';
       this.novoPreco = '';
