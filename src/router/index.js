@@ -9,6 +9,11 @@ const router = createRouter({
       name: "home",
       component: ListaDeCompras,
     },
+    {
+      path: "/lista-compras",
+      name: "home",
+      component: ListaDeCompras,
+    },
   ],
 });
 
