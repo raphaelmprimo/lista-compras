@@ -50,8 +50,8 @@
   <div style="margin:10px">
     <va-card 
       v-for="(item, index) in itens"
-      v-key="`item-${index}`"
-      stripe :stripe-color="item.adicionado ? 'success' : 'warning'" 
+      stripe
+      :stripe-color="item.adicionado ? 'success' : 'warning'" 
       style="padding: 0.75rem 0.5rem 0.5rem 0.5rem;"
     >
       <div class="row">
