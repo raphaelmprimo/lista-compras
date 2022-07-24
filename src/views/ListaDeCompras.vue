@@ -139,6 +139,7 @@ export default {
     removerItem (index) {
       delete this.itens[index];
     }
+  }
 }
 </script>
 
