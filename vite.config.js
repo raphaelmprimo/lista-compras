@@ -11,4 +11,6 @@ export default defineConfig({
         { find: /^~(.*)$/, replacement: '$1' },
     ],
   },
+
+  base: './',
 })
