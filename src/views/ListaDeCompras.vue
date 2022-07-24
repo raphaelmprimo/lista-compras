@@ -6,8 +6,8 @@
         <div class="flex align-self--center" style="flex-grow:1">
           <div>
             <va-input
-              v-model="nomeItem"
               label="Nome"
+              v-model="novoNome"
               placeholder="Nome"
               class="mr-1"
               outline
@@ -18,7 +18,7 @@
           <div class="row justify--end">
             <div class="flex" style="flex-grow:1">
               <va-input
-                v-model="valorItem"
+                v-model="novoPreco"
                 label="Preço Unit."
                 placeholder="0.00"
                 outline
@@ -35,6 +35,7 @@
                 :rounded="false"
                 class="ml-1"
                 color="primary"
+                @click="adicionarItem()"
               />
             </div>
 
@@ -47,14 +48,19 @@
   </div>
 
   <div style="margin:10px">
-    <va-card stripe :stripe-color="cardStripeColor" style="padding: 0.75rem 0.5rem 0.5rem 0.5rem;">
+    <va-card 
+      v-for="(item, index) in itens"
+      v-key="`item-${index}`"
+      stripe :stripe-color="item.adicionado ? 'success' : 'warning'" 
+      style="padding: 0.75rem 0.5rem 0.5rem 0.5rem;"
+    >
       <div class="row">
         <div class="flex align-self--center" style="flex-grow:1">
           <div>
             <va-checkbox 
-              v-model="adicionado" 
+              v-model="item.adicionado" 
               color="success"
-              label="Café" 
+              :label="item.nome" 
             />
           </div>
         </div>
@@ -62,7 +68,7 @@
           <div class="row justify--end">
             <div class="flex">
               <va-counter
-                v-model="qtd"
+                v-model="item.qtd"
                 outline
                 margins="0px"
                 width="110px"
@@ -75,6 +81,7 @@
                 :rounded="false"
                 class="ml-1"
                 color="danger"
+                @click="removerItem(index)"
               />
             </div>
 
@@ -101,21 +108,37 @@ export default {
   },
   data() {
     return {
-      qtd: 1,
-      adicionado: 0,
-      nomeItem: '',
-      valorItem: ''
+      novoNome: '',
+      nomePreco: '',
+      itens: {}
     }
   },
   computed: {
-    cardStripeColor () {
-      if (this.adicionado) {
-        return 'success';
-      }
+    
+  },
+  methods: {
+    adicionarItem () {
+      this.itens.push({
+        nome: this.novoNome,
+        preco: this.novoPreco,
+        qtd: 1,
+        adicionado: false
+      });
 
-      return 'warning';
+      this.$vaToast.init({
+        message: 'Item adicionado à lista',
+        color: 'success',
+        position: 'bottom-right',
+        duration: 2000
+      });
+
+      this.novoNome = '';
+      this.novoPreco = '';
+
+    },
+    removerItem (index) {
+      delete this.itens[index];
     }
-  }
 }
 </script>
 
