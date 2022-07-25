@@ -148,7 +148,7 @@ export default {
     abrirModalItem (item) {
       this.dadosModal = item;
       this.exibirModal = true;
-    }
+    },
     removerItem (item) {
       this.itens = this.itens.filter(i => i !== item);
     }
