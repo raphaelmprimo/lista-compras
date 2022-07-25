@@ -169,19 +169,21 @@
   </va-modal>
 
 
-  <va-affix :offset-bottom="20" style="padding:5px">
-    <va-card color="primary" gradient>
-       <va-card-content>
-          <div class="row justify--space-between text--bold">
-            <div class="flex">
-              Total: R${{ totalGeral }}
+  <va-affix :offset-bottom="20">
+    <div style="padding:5px">
+      <va-card color="primary" gradient>
+        <va-card-content>
+            <div class="row justify--space-between text--bold">
+              <div class="flex">
+                Total: R${{ totalGeral }}
+              </div>
+              <div class="flex">
+                Carrinho: R${{ totalCarrinho }}
+              </div>
             </div>
-            <div class="flex">
-              Carrinho: R${{ totalCarrinho }}
-            </div>
-          </div>
-       </va-card-content>
-     </va-card>
+        </va-card-content>
+      </va-card>
+     </div>
   </va-affix>
 
 </template>
