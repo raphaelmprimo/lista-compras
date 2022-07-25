@@ -168,6 +168,15 @@
     </template>
   </va-modal>
 
+
+  <va-affix :offset-bottom="50">
+    <div style="padding: 10px 30px; background-color: lightblue;">
+      <div>
+      Total: R${{ valorTotal }}
+      </div>
+    </div>
+  </va-affix>
+
 </template>
 
 <script>
@@ -196,7 +205,9 @@ export default {
     }
   },
   computed: {
-    
+    valorTotal () {
+      return this.itens.reduce((total, item) => total + (Number(item.qtd) * Math.max(item.preco, 0)), 0);
+    }
   },
   watch: {
     itens: {
