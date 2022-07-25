@@ -174,10 +174,10 @@
        <va-card-content>
           <div class="row justify--space-between text--bold">
             <div class="flex">
-              Total Geral: R${{ totalGeral }}
+              Total: R${{ totalGeral }}
             </div>
             <div class="flex">
-              Total no Carrinho: R${{ totalCarrinho }}
+              Carrinho: R${{ totalCarrinho }}
             </div>
           </div>
        </va-card-content>
