@@ -90,18 +90,56 @@
 
   <va-modal
     v-model="exibirModal"
+    v-if="exibirModal"
     no-padding
+    size="small"
+    blur
+    hide-default-actions
   >
     <template #content="{ ok }">
       <va-card-title>
         Editar Item
       </va-card-title>
       <va-card-content>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Id perferendis, illum rem dolorum obcaecati dolorem. Laborum, odio ipsum qui quaerat itaque reiciendis error nemo tenetur beatae. Vel obcaecati magni maxime!
+
+        <div>
+            <va-input
+              label="Nome"
+              v-model="dadosModal.nome"
+              placeholder="Nome"
+              outline
+            />
+        </div>
+
+        <div>
+            <va-counter
+                v-model="dadosModal.qtd"
+                outline
+                margins="0px"
+                :min="1"
+              />
+        </div>
+
+        <div>
+              <va-input
+                v-model="dadosModal.preco"
+                label="Preço Unit."
+                placeholder="0.00"
+                outline
+                :mask="{
+                  numeral: true,
+                  numeralDecimalScale: 2,
+                  numeralPositiveOnly: true
+                }"
+              />
+        </div>
+
+        <div>
+            <va-button @click="salvarItemModal()">Salvar Item</va-button
+        </div>
+        
+        
       </va-card-content>
-      <va-card-actions>
-        <va-button @click="ok" color="warning">Ok!</va-button>
-      </va-card-actions>
     </template>
   </va-modal>
 
@@ -129,6 +167,7 @@ export default {
       itens: [],
       exibirModal: false,
       dadosModal: [],
+      indexModal: undefined
     }
   },
   computed: {
@@ -150,8 +189,15 @@ export default {
     },
     abrirModalItem (item) {
       this.dadosModal = item;
+      this.indexModal = this.itens.indexOf(item);
       this.exibirModal = true;
     },
+    salvarItemModal () {
+      this.itens[this.indexModal] = this.dadosModal;
+      this.exibirModal = false;
+      this.indexModal = undefined;
+      this.dadosModal = [];
+    }
     removerItem (item) {
       this.itens = this.itens.filter(i => i !== item);
     }
