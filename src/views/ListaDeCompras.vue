@@ -199,8 +199,11 @@ export default {
     
   },
   watch: {
-    itens(novoValor) {
-      window.localStorage.setItem('LISTA_COMPRAS', JSON.stringify(novoValor));
+    itens {
+      deep: true,
+      handler(novoValor) {
+        window.localStorage.setItem('LISTA_COMPRAS', JSON.stringify(novoValor));
+      }
     }
   },
   methods: {
