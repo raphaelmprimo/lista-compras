@@ -72,7 +72,7 @@
                 :rounded="false"
                 class="ml-1"
                 color="danger"
-                @click="removerItem(index)"
+                @click="removerItem(item)"
               />
             </div>
 
@@ -116,19 +116,12 @@ export default {
         adicionado: false
       });
 
-      this.$vaToast.init({
-        message: 'Item adicionado à lista',
-        color: 'success',
-        position: 'bottom-right',
-        duration: 2000
-      });
-
       this.novoNome = '';
       this.novoPreco = '';
 
     },
-    removerItem (index) {
-      this.itens = this.itens.splice(index, 1);
+    removerItem (item) {
+      this.itens = this.itens.filter(i => i !== item);
     }
   }
 }
