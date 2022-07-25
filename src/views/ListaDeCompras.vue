@@ -135,7 +135,7 @@
         </div>
 
         <div>
-            <va-button @click="salvarItemModal()">Salvar Item</va-button
+            <va-button @click="salvarItemModal()">Salvar Item</va-button>
         </div>
         
         
@@ -179,8 +179,7 @@ export default {
         nome: this.novoNome,
         preco: this.novoPreco,
         qtd: 1,
-        adicionado: false,
-        exibirRemover: false
+        adicionado: false
       });
 
       this.novoNome = '';
