@@ -172,7 +172,7 @@
   <va-affix :offset-bottom="50">
     <va-card color="primary" gradient>
        <va-card-content>
-          <div row justify--space-between>
+          <div class="row justify--space-between">
             <div class="flex">
               Total Geral: R${{ totalGeral }}
             </div>
