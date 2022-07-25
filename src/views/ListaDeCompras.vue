@@ -3,8 +3,7 @@
     <va-card style="padding: 0.75rem">
       <va-card-title style="padding: 0.25rem">Adicionar item à lista</va-card-title>
       <div class="row">
-        <div class="flex align-self--center xs6" style="flex-grow:1">
-          <div>
+        <div class="flex align-self--center xs6">
             <va-input
               label="Nome"
               v-model="novoNome"
@@ -12,11 +11,8 @@
               class="mr-1"
               outline
             />
-          </div>
         </div>
-        <div class="flex align-self--center xs6">
-          <div class="row justify--end">
-            <div class="flex" style="flex-grow:1">
+        <div class="flex align-self--center xs5">
               <va-input
                 v-model="novoPreco"
                 label="Preço Unit."
@@ -28,8 +24,8 @@
                   numeralPositiveOnly: true
                 }"
               />
-            </div>
-            <div class="flex">
+        </div>
+        <div class="flex align-self--center xs1">
               <va-button 
                 icon="add"
                 :rounded="false"
@@ -37,12 +33,7 @@
                 color="primary"
                 @click="adicionarItem()"
               />
-            </div>
-
-          </div>
-            
-            
-        </div>
+         </div>
       </div>
     </va-card>
   </div>
@@ -52,7 +43,7 @@
       v-for="(item, index) in itens"
       stripe
       :stripe-color="item.adicionado ? 'success' : 'warning'" 
-      style="padding: 0.75rem 0.5rem 0.5rem 0.5rem;"
+      style="padding: 0.75rem 0.5rem 0.5rem 0.5rem; margin-bottom: 10px"
     >
       <div class="row">
         <div class="flex align-self--center" style="flex-grow:1">
@@ -125,19 +116,19 @@ export default {
         adicionado: false
       });
 
-      //this.$vaToast.init({
-      //  message: 'Item adicionado à lista',
-      //  color: 'success',
-      //  position: 'bottom-right',
-      //  duration: 2000
-      //});
+      this.$vaToast.init({
+        message: 'Item adicionado à lista',
+        color: 'success',
+        position: 'bottom-right',
+        duration: 2000
+      });
 
       this.novoNome = '';
       this.novoPreco = '';
 
     },
     removerItem (index) {
-      delete this.itens[index];
+      this.itens = this.itens.splice(index, 1);
     }
   }
 }
