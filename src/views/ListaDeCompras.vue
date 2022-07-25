@@ -198,6 +198,11 @@ export default {
   computed: {
     
   },
+  watch: {
+    itens(novoValor) {
+      window.localStorage.setItem('LISTA_COMPRAS', JSON.stringify(novoValor));
+    }
+  },
   methods: {
     adicionarItem () {
       this.itens.push({
@@ -209,7 +214,6 @@ export default {
 
       this.novoNome = '';
       this.novoPreco = '';
-
     },
     abrirModalItem (item) {
       this.dadosModal = item;
@@ -229,6 +233,11 @@ export default {
       this.indexModal = undefined;
       this.dadosModal = [];
     },
+  },
+  mounted () {
+    if (window.localStorage.getItem('LISTA_COMPRAS') !== null) {
+      this.itens = JSON.parse(window.localStorage.getItem('LISTA_COMPRAS'));
+    }
   }
 }
 </script>
