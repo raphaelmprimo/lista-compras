@@ -173,10 +173,10 @@
     <va-card color="primary" gradient>
        <va-card-content>
           <div class="row justify--space-between">
-            <div class="flex">
+            <div class="flex display-6">
               Total Geral: R${{ totalGeral }}
             </div>
-            <div class="flex">
+            <div class="flex display-6">
               Total no Carrinho: R${{ totalCarrinho }}
             </div>
           </div>
@@ -214,10 +214,10 @@ export default {
   },
   computed: {
     totalGeral () {
-      return this.itens.reduce((total, item) => total + (Number(item.qtd) * Math.max(item.preco, 0)), 0);
+      return this.itens.reduce((total, item) => total + (Number(item.qtd) * Math.max(item.preco, 0)), 0).toLocaleString("pt-BR");
     },
     totalCarrinho () {
-      return this.itens.filter(item => item.adicionado === true).reduce((total, item) => total + (Number(item.qtd) * Math.max(item.preco, 0)), 0);
+      return this.itens.filter(item => item.adicionado === true).reduce((total, item) => total + (Number(item.qtd) * Math.max(item.preco, 0)), 0).toLocaleString("pt-BR");
     },
   },
   watch: {
