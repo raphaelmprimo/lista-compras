@@ -21,7 +21,8 @@
                 :mask="{
                   numeral: true,
                   numeralDecimalScale: 2,
-                  numeralPositiveOnly: true
+                  numeralPositiveOnly: true,
+                  numericOnly: true
                 }"
               />
         </div>
@@ -94,7 +95,7 @@
       <va-card-content>
 
         <div class="mb-3">
-            <p class="title">Nome</p>
+            <p class="mb-1">Nome</p>
             <va-input
               v-model="dadosModal.nome"
               placeholder="Nome"
@@ -103,7 +104,7 @@
         </div>
 
         <div class="mb-3">
-            <p class="title">Quantidade</p>
+            <p class="mb-1">Quantidade</p>
             <va-counter
                 v-model="dadosModal.qtd"
                 outline
@@ -114,7 +115,7 @@
         </div>
 
         <div class="mb-3">
-            <p class="title">Preço Unitário</p>
+            <p class="mb-1">Preço Unitário</p>
              <va-input
                 v-model="dadosModal.preco"
                 placeholder="0.00"
@@ -122,10 +123,19 @@
                 :mask="{
                   numeral: true,
                   numeralDecimalScale: 2,
-                  numeralPositiveOnly: true
+                  numeralPositiveOnly: true,
+                  numericOnly: true
                 }"
               />
         </div>
+
+        <div class="mb-3">
+            <va-checkbox 
+              v-model="dadosModal.adicionado" 
+              color="success"
+              label="Adicionado ao carrinho?" 
+            />
+          </div>
 
         <div class="mt-3">
           <va-button 
