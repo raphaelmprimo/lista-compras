@@ -39,7 +39,7 @@
     </va-card>
   </div>
 
-  <div style="margin:10px">
+  <div class="mb-4" style="margin:10px">
     <va-card 
       v-for="(item, index) in itens"
       stripe
@@ -169,7 +169,7 @@
   </va-modal>
 
 
-  <va-affix :offset-bottom="50">
+  <va-affix :offset-bottom="20">
     <va-card color="primary" gradient>
        <va-card-content>
           <div class="row justify--space-between">
