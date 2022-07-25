@@ -169,7 +169,7 @@
   </va-modal>
 
 
-  <va-affix :offset-bottom="20">
+  <va-affix :offset-bottom="20" style="padding:5px">
     <va-card color="primary" gradient>
        <va-card-content>
           <div class="row justify--space-between">
