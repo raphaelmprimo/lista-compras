@@ -172,11 +172,11 @@
   <va-affix :offset-bottom="20" style="padding:5px">
     <va-card color="primary" gradient>
        <va-card-content>
-          <div class="row justify--space-between">
-            <div class="flex display-6" style="color: #fff">
+          <div class="row justify--space-between text--bold">
+            <div class="flex">
               Total Geral: R${{ totalGeral }}
             </div>
-            <div class="flex display-6" style="color: #fff">
+            <div class="flex">
               Total no Carrinho: R${{ totalCarrinho }}
             </div>
           </div>
