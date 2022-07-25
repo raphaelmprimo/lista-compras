@@ -197,10 +197,10 @@ export default {
       this.exibirModal = false;
       this.indexModal = undefined;
       this.dadosModal = [];
-    }
+    },
     removerItem (item) {
       this.itens = this.itens.filter(i => i !== item);
-    }
+    },
   }
 }
 </script>
