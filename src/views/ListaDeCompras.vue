@@ -46,7 +46,11 @@
       style="padding: 0.75rem 0.5rem 0.5rem 0.5rem; margin-bottom: 10px"
     >
       <div class="row">
-        <div class="flex align-self--center" style="flex-grow:1">
+        <div 
+          class="flex align-self--center"
+          style="flex-grow:1"
+          @dblclick="item.exibirRemover = ! item.exibirRemover"
+        >
           <div>
             <va-checkbox 
               v-model="item.adicionado" 
@@ -66,7 +70,7 @@
                 :min="1"
               />
             </div>
-            <div class="flex">
+            <div class="flex" v-if="item.exibirRemover">
               <va-button 
                 icon="delete"
                 :rounded="false"
@@ -113,7 +117,8 @@ export default {
         nome: this.novoNome,
         preco: this.novoPreco,
         qtd: 1,
-        adicionado: false
+        adicionado: false,
+        exibirRemover: false
       });
 
       this.novoNome = '';
