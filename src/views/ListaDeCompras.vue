@@ -199,7 +199,7 @@ export default {
     
   },
   watch: {
-    itens {
+    itens: {
       deep: true,
       handler(novoValor) {
         window.localStorage.setItem('LISTA_COMPRAS', JSON.stringify(novoValor));
