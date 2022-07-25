@@ -170,17 +170,24 @@
 
 
   <va-affix :offset-bottom="50">
-    <div style="padding: 10px 30px; background-color: lightblue;">
-      <div>
-      Total: R${{ valorTotal }}
-      </div>
-    </div>
+    <va-card color="primary" gradient>
+       <va-card-content>
+          <div row justify--space-between>
+            <div class="flex">
+              Total Geral: R${{ totalGeral }}
+            </div>
+            <div class="flex">
+              Total no Carrinho: R${{ totalCarrinho }}
+            </div>
+          </div>
+       </va-card-content>
+     </va-card>
   </va-affix>
 
 </template>
 
 <script>
-import { VaNavbar, VaCard, VaCounter, VaCheckbox, VaCardTitle, VaInput, VaModal, VaCardContent, VaCardActions } from 'vuestic-ui';
+import { VaNavbar, VaCard, VaCounter, VaCheckbox, VaCardTitle, VaInput, VaModal, VaCardContent, VaCardActions, VaAffix } from 'vuestic-ui';
 
 export default {
   components: {
@@ -192,7 +199,8 @@ export default {
     VaInput,
     VaModal,
     VaCardContent,
-    VaCardActions
+    VaCardActions,
+    VaAffix
   },
   data() {
     return {
@@ -205,9 +213,12 @@ export default {
     }
   },
   computed: {
-    valorTotal () {
+    totalGeral () {
       return this.itens.reduce((total, item) => total + (Number(item.qtd) * Math.max(item.preco, 0)), 0);
-    }
+    },
+    totalCarrinho () {
+      return this.itens.filter(item => item.adicionado === true).reduce((total, item) => total + (Number(item.qtd) * Math.max(item.preco, 0)), 0);
+    },
   },
   watch: {
     itens: {
