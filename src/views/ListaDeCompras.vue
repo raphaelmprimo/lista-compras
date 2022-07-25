@@ -71,16 +71,7 @@
                 :min="1"
               />
             </div>
-            <div class="flex" v-if="item.exibirRemover">
-              <va-button 
-                icon="delete"
-                :rounded="false"
-                class="ml-1"
-                color="danger"
-                @click="removerItem(item)"
-              />
-            </div>
-
+            
           </div>
             
             
@@ -98,13 +89,13 @@
   >
     <template #content="{ ok }">
       <va-card-title>
-        Editar Item
+        <h6 class="display-6">Editar Item</h6>
       </va-card-title>
       <va-card-content>
 
         <div class="mb-3">
+            <p class="title">Nome</p>
             <va-input
-              label="Nome"
               v-model="dadosModal.nome"
               placeholder="Nome"
               outline
@@ -112,6 +103,7 @@
         </div>
 
         <div class="mb-3">
+            <p class="title">Quantidade</p>
             <va-counter
                 v-model="dadosModal.qtd"
                 outline
@@ -122,9 +114,9 @@
         </div>
 
         <div class="mb-3">
-              <va-input
+            <p class="title">Preço Unitário</p>
+             <va-input
                 v-model="dadosModal.preco"
-                label="Preço Unit."
                 placeholder="0.00"
                 outline
                 :mask="{
@@ -135,8 +127,24 @@
               />
         </div>
 
-        <div>
-            <va-button @click="salvarItemModal()">Salvar Item</va-button>
+        <div class="mt-3">
+          <va-button 
+            icon="save" 
+            :rounded="false" 
+            @click="salvarItemModal()"
+          >
+            Salvar Item
+          </va-button>
+
+          <va-button 
+            icon="delete"
+            :rounded="false" 
+            color="danger"
+            class="ml-2"
+            @click="removerItemModal()"
+          >
+            Remover Item
+          </va-button>
         </div>
         
         
@@ -193,13 +201,17 @@ export default {
       this.exibirModal = true;
     },
     salvarItemModal () {
+      this.fecharModal();  
+    },
+    removerItemModal () {
+      this.itens = this.itens.filter(i => i !== this.dadosModal);
+      this.fecharModal();
+    },
+    fecharModal () {
       this.$refs.itemModal.hide();
       this.exibirModal = false;
       this.indexModal = undefined;
       this.dadosModal = [];
-    },
-    removerItem (item) {
-      this.itens = this.itens.filter(i => i !== item);
     },
   }
 }
