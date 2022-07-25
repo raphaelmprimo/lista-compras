@@ -92,7 +92,7 @@
     v-model="exibirModal"
     no-padding
   >
-    <template #content>
+    <template #content="{ ok }">
       <va-card-title>
         Editar Item
       </va-card-title>
@@ -117,7 +117,10 @@ export default {
     VaCounter,
     VaCheckbox,
     VaCardTitle,
-    VaInput
+    VaInput,
+    VaModal,
+    VaCardContent,
+    VaCardActions
   },
   data() {
     return {
