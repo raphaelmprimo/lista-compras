@@ -49,7 +49,7 @@
         <div 
           class="flex align-self--center"
           style="flex-grow:1"
-          @dblclick="item.exibirRemover = ! item.exibirRemover"
+          @dblclick="exibirRemover(index)"
         >
           <div>
             <va-checkbox 
@@ -125,6 +125,11 @@ export default {
       this.novoPreco = '';
 
     },
+    exibirRemover (index) {
+      this.itens[index].exibirRemover = ! this.itens[index].exibirRemover;
+
+      setTimeout(() => this.itens[index].exibirRemover = false, 4000);
+    }
     removerItem (item) {
       this.itens = this.itens.filter(i => i !== item);
     }
