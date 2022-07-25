@@ -44,6 +44,7 @@
       stripe
       :stripe-color="item.adicionado ? 'success' : 'warning'" 
       style="padding: 0.75rem 0.5rem 0.5rem 0.5rem; margin-bottom: 10px"
+      class="no_selection"
     >
       <div class="row">
         <div 
@@ -116,6 +117,7 @@
                 outline
                 margins="0px"
                 :min="1"
+                width="100%"
               />
         </div>
 
@@ -191,7 +193,6 @@ export default {
       this.exibirModal = true;
     },
     salvarItemModal () {
-      this.itens[this.indexModal] = this.dadosModal;
       this.$refs.itemModal.hide();
       this.exibirModal = false;
       this.indexModal = undefined;
@@ -203,7 +204,12 @@ export default {
   }
 }
 </script>
-
- <style scoped>
-
+<style scoped>
+.no_selection {
+    user-select: none; /* standard syntax */
+    -webkit-user-select: none; /* webkit (safari, chrome) browsers */
+    -moz-user-select: none; /* mozilla browsers */
+    -khtml-user-select: none; /* webkit (konqueror) browsers */
+    -ms-user-select: none; /* IE10+ */
+}
 </style>
