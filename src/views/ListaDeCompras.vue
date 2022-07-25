@@ -49,7 +49,7 @@
         <div 
           class="flex align-self--center"
           style="flex-grow:1"
-          @dblclick="exibirRemover(index)"
+          @dblclick="abrirModalItem(item)"
         >
           <div>
             <va-checkbox 
@@ -87,10 +87,28 @@
       </div>
     </va-card>
   </div>
+
+  <va-modal
+    v-model="exibirModal"
+    no-padding
+  >
+    <template #content>
+      <va-card-title>
+        Editar Item
+      </va-card-title>
+      <va-card-content>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Id perferendis, illum rem dolorum obcaecati dolorem. Laborum, odio ipsum qui quaerat itaque reiciendis error nemo tenetur beatae. Vel obcaecati magni maxime!
+      </va-card-content>
+      <va-card-actions>
+        <va-button @click="ok" color="warning">Ok!</va-button>
+      </va-card-actions>
+    </template>
+  </va-modal>
+
 </template>
 
 <script>
-import { VaNavbar, VaCard, VaCounter, VaCheckbox, VaCardTitle, VaInput } from 'vuestic-ui';
+import { VaNavbar, VaCard, VaCounter, VaCheckbox, VaCardTitle, VaInput, VaModal, VaCardContent, VaCardActions } from 'vuestic-ui';
 
 export default {
   components: {
@@ -105,7 +123,9 @@ export default {
     return {
       novoNome: '',
       nomePreco: '',
-      itens: []
+      itens: [],
+      exibirModal: false,
+      dadosModal: [],
     }
   },
   computed: {
@@ -125,10 +145,9 @@ export default {
       this.novoPreco = '';
 
     },
-    exibirRemover (index) {
-      this.itens[index].exibirRemover = ! this.itens[index].exibirRemover;
-
-      setTimeout(() => this.itens[index].exibirRemover = false, 4000);
+    abrirModalItem (item) {
+      this.dadosModal = item;
+      this.exibirModal = true;
     }
     removerItem (item) {
       this.itens = this.itens.filter(i => i !== item);
