@@ -90,12 +90,12 @@
   >
     <template #content="{ ok }">
       <va-card-title>
-        <h6 class="display-6">Editar Item</h6>
+        <h6 class="display-6 pt-4">Editar Item</h6>
       </va-card-title>
       <va-card-content>
 
-        <div class="mb-3">
-            <p class="mb-1">Nome</p>
+        <div class="mb-4">
+            <p class="mb-2">Nome</p>
             <va-input
               v-model="dadosModal.nome"
               placeholder="Nome"
@@ -103,8 +103,8 @@
             />
         </div>
 
-        <div class="mb-3">
-            <p class="mb-1">Quantidade</p>
+        <div class="mb-4">
+            <p class="mb-2">Quantidade</p>
             <va-counter
                 v-model="dadosModal.qtd"
                 outline
@@ -114,8 +114,8 @@
               />
         </div>
 
-        <div class="mb-3">
-            <p class="mb-1">Preço Unitário</p>
+        <div class="mb-4">
+            <p class="mb-2">Preço Unitário</p>
              <va-input
                 v-model="dadosModal.preco"
                 placeholder="0.00"
@@ -129,7 +129,7 @@
               />
         </div>
 
-        <div class="mb-3">
+        <div class="mb-4">
             <va-checkbox 
               v-model="dadosModal.adicionado" 
               color="success"
@@ -137,27 +137,33 @@
             />
           </div>
 
-        <div class="mt-3">
+        <div class="mt-4 row justify--center">
           <va-button 
             icon="save" 
             :rounded="false" 
+            size="large"
             @click="salvarItemModal()"
           >
             Salvar Item
           </va-button>
 
+        </div>
+        
+        <div class="mt-4 row justify--center">
+      
           <va-button 
             icon="delete"
             :rounded="false" 
             color="danger"
-            class="ml-2"
+            size="large"
+            outline
             @click="removerItemModal()"
           >
             Remover Item
           </va-button>
         </div>
         
-        
+
       </va-card-content>
     </template>
   </va-modal>
