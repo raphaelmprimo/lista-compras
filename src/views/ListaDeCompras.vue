@@ -89,11 +89,10 @@
   </div>
 
   <va-modal
+    ref="itemModal"
     v-model="exibirModal"
     v-if="exibirModal"
-    no-padding
     size="small"
-    blur
     hide-default-actions
   >
     <template #content="{ ok }">
@@ -102,7 +101,7 @@
       </va-card-title>
       <va-card-content>
 
-        <div>
+        <div class="mb-3">
             <va-input
               label="Nome"
               v-model="dadosModal.nome"
@@ -111,7 +110,7 @@
             />
         </div>
 
-        <div>
+        <div class="mb-3">
             <va-counter
                 v-model="dadosModal.qtd"
                 outline
@@ -120,7 +119,7 @@
               />
         </div>
 
-        <div>
+        <div class="mb-3">
               <va-input
                 v-model="dadosModal.preco"
                 label="Preço Unit."
@@ -193,6 +192,7 @@ export default {
     },
     salvarItemModal () {
       this.itens[this.indexModal] = this.dadosModal;
+      this.$refs.itemModal.hide();
       this.exibirModal = false;
       this.indexModal = undefined;
       this.dadosModal = [];
